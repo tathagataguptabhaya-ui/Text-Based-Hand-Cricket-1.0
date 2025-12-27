@@ -179,6 +179,33 @@ public class HandCricket
                     String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+h_team[i]+" runs");
+                    if(h_team[i]==0)
+                    {
+                        System.out.println("THE BATSMAN's OUT FOR A DUCK");
+                        if(i!=0)
+                        {
+                            System.out.println("THE BOWLER'S ON A HATTRICK");
+                            if((i-1)>=0)
+                            {
+                                if(h_team[i-1]==0)
+                                {
+                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
+                                }
+                            }
+                        }
+                    }
+                    else if(h_team[i]>=50 && c_team[i]<100)
+                    {
+                        System.out.println("That was a great innings as the player departs for a well made half century!!");
+                    }
+                    else if(h_team[i]>=70 && h_team[i]<100)
+                    {
+                        System.out.println("Great knock but perhaps the plaer will not be happy as it wil think it missed out on the big score today!!");
+                    }
+                    else if(h_team[i]>=100)
+                    {
+                        System.out.println("What a knock!!!The player departs for a well made century and has helped his team to get to a dominating position in this match");
+                    }
                     h_wickets_lost+=1;
                     System.out.println("The score is "+ h_team_score+"/"+ h_wickets_lost);
                     i+=1;
@@ -225,6 +252,33 @@ public class HandCricket
                     String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+h_team[i]+" runs");
+                    if(h_team[i]==0)
+                    {
+                        System.out.println("THE BATSMAN's OUT FOR A DUCK");
+                        if(i!=0)
+                        {
+                            System.out.println("THE BOWLER'S ON A HATTRICK");
+                            if((i-1)>=0)
+                            {
+                                if(h_team[i-1]==0)
+                                {
+                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
+                                }
+                            }
+                        }
+                    }
+                    else if(h_team[i]>=50 && c_team[i]<100)
+                    {
+                        System.out.println("That was a great innings as the player departs for a well made half century!!");
+                    }
+                    else if(h_team[i]>=70 && h_team[i]<100)
+                    {
+                        System.out.println("Great knock but perhaps the plaer will not be happy as it wil think it missed out on the big score today!!");
+                    }
+                    else if(h_team[i]>=100)
+                    {
+                        System.out.println("What a knock under pressure!!!The player departs for a well made century and has helped his team to get closer to a dominating position in this match");
+                    }
                     h_wickets_lost+=1;
                     System.out.println("The score is "+ h_team_score+"/"+ h_wickets_lost);
                     i+=1;
@@ -271,6 +325,33 @@ public class HandCricket
                     String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+c_team[i]+" runs");
+                    if(c_team[i]==0)
+                    {
+                        System.out.println("THE BATSMAN's OUT FOR A DUCK");
+                        if(i!=0)
+                        {
+                            System.out.println("THE BOWLER'S ON A HATTRICK");
+                            if((i-1)>=0)
+                            {
+                                if(c_team[i-1]==0)
+                                {
+                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
+                                }
+                            }
+                        }
+                    }
+                    else if(c_team[i]>=50 && c_team[i]<100)
+                    {
+                        System.out.println("That was a great innings as the player departs for a well made half century!!");
+                    }
+                    else if(c_team[i]>=70 && c_team[i]<100)
+                    {
+                        System.out.println("Great knock but perhaps the plaer will not be happy as it wil think it missed out on the big score today!!");
+                    }
+                    else if(c_team[i]>=100)
+                    {
+                        System.out.println("What a knock!!!The player departs for a well made century and has helped his team to get to a dominating position in this match");
+                    }
                     c_wickets_lost+=1;
                     System.out.println("The score is "+ c_team_score+"/"+ c_wickets_lost);
                     i+=1;
@@ -317,6 +398,33 @@ public class HandCricket
                     String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+c_team[i]+" runs");
+                    if(c_team[i]==0)
+                    {
+                        System.out.println("THE BATSMAN's OUT FOR A DUCK");
+                        if(i!=0)
+                        {
+                            System.out.println("THE BOWLER'S ON A HATTRICK");
+                            if((i-1)>=0)
+                            {
+                                if(c_team[i-1]==0)
+                                {
+                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
+                                }
+                            }
+                        }
+                    }
+                    else if(c_team[i]>=50 && c_team[i]<100)
+                    {
+                        System.out.println("That was a great innings as the player departs for a well made half century!!");
+                    }
+                    else if(c_team[i]>=70 && c_team[i]<100)
+                    {
+                        System.out.println("Great knock but perhaps the plaer will not be happy as it wil think it missed out on the big score today!!");
+                    }
+                    else if(c_team[i]>=100)
+                    {
+                        System.out.println("What a knock!!!The player departs for a well made century and has helped his team to get to a dominating position in this match");
+                    }
                     c_wickets_lost+=1;
                     System.out.println("The score is "+ c_team_score+"/"+ c_wickets_lost);
                     i+=1;
