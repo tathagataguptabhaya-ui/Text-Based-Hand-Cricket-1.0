@@ -53,7 +53,7 @@ public class HandCricket
             }
             else if(h_wins>cpu_wins)
             {
-                System.out.println("DEFEATING THE HUMAN IS NOT AN EASY TASK AS THE SCIENTISTS THOUGHT IT WOULD BE.CAN THEY CACULATE THEIR WAY BACK INTO THIS SERIES??ONLY TIME WILL TELL");
+                System.out.println("DEFEATING THE HUMAN IS NOT AN EASY TASK AS THE SCIENTISTS THOUGHT IT WOULD BE.CAN THEY CALCULATE THEIR WAY BACK INTO THIS SERIES??ONLY TIME WILL TELL");
             }
             else if((h_wins==cpu_wins)&&(h_wins<((int)(m/2)-1))&&(h_wins!=0))
             {
