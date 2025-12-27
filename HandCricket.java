@@ -182,17 +182,18 @@ public class HandCricket
                     if(h_team[i]==0)
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
-                        if(i!=0)
+                    }
+                    if(h_team[i]==0 && i!=0)
+                    {
+                        System.out.println("THE BOWLER'S ON A HATTRICK");
+                        if((i-1)>0)
                         {
-                            System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>=0)
+                            if(h_team[i-1]==0)
                             {
-                                if(h_team[i-1]==0)
-                                {
-                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                                }
+                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
                             }
                         }
+                        
                     }
                     else if(h_team[i]>=50 && c_team[i]<100)
                     {
@@ -255,17 +256,18 @@ public class HandCricket
                     if(h_team[i]==0)
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
-                        if(i!=0)
+                    }
+                    if(h_team[i]==0 && i!=0)
+                    {
+                        System.out.println("THE BOWLER'S ON A HATTRICK");
+                        if((i-1)>0)
                         {
-                            System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>0)
+                            if(h_team[i-1]==0)
                             {
-                                if(h_team[i-1]==0)
-                                {
-                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                                }
+                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
                             }
                         }
+                        
                     }
                     else if(h_team[i]>=50 && h_team[i]<100)
                     {
@@ -328,17 +330,18 @@ public class HandCricket
                     if(c_team[i]==0)
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
-                        if(i!=0)
+                    }
+                    if(c_team[i]==0 && i!=0)
+                    {
+                        System.out.println("THE BOWLER'S ON A HATTRICK");
+                        if((i-1)>0)
                         {
-                            System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>0)
+                            if(c_team[i-1]==0)
                             {
-                                if(c_team[i-1]==0)
-                                {
-                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                                }
+                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
                             }
                         }
+                        
                     }
                     else if(c_team[i]>=50 && c_team[i]<100)
                     {
@@ -401,17 +404,18 @@ public class HandCricket
                     if(c_team[i]==0)
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
-                        if(i!=0)
+                    }
+                    if(c_team[i]==0 && i!=0)
+                    {
+                        System.out.println("THE BOWLER'S ON A HATTRICK");
+                        if((i-1)>0)
                         {
-                            System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>0)
+                            if(c_team[i-1]==0)
                             {
-                                if(c_team[i-1]==0)
-                                {
-                                    System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                                }
+                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
                             }
                         }
+                        
                     }
                     else if(c_team[i]>=50 && c_team[i]<100)
                     {
