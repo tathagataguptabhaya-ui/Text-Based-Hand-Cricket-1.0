@@ -2,6 +2,7 @@ import java.security.SecureRandom;
 import java.util.Scanner;
 public class HandCricket 
 {
+    static int consecutiveWickets=0;
     static int h_team[]=new int[10];
     static int c_team[]=new int[10];
     static int target;//checks the target
@@ -160,6 +161,10 @@ public class HandCricket
             {
                 if(h_ch!=c_ch)
                 {
+                    if(consecutiveWickets>0)
+                    {
+                        consecutiveWickets=0;
+                    }
                     if(h_ch==4)
                     {
                         String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
@@ -176,6 +181,7 @@ public class HandCricket
                 }
                 else
                 {
+                    consecutiveWickets+=1;
                     String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+h_team[i]+" runs");
@@ -183,17 +189,14 @@ public class HandCricket
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
                     }
-                    if(h_team[i]==0 && i!=0)
+                    if(h_team[i]==0 && consecutiveWickets==2)
                     {
                         System.out.println("THE BOWLER'S ON A HATTRICK");
-                        if((i-1)>0)
-                        {
-                            if(h_team[i-1]==0)
-                            {
-                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                            }
-                        }
-                        
+                    }
+                    else if(h_team[i]==0 && consecutiveWickets==3)
+                    {
+                        System.out.println("THE BOWLER'S GOT A  HATTRICK!!!!WHAT A BRILLIANT SPELL");
+                        consecutiveWickets=0;
                     }
                     else if(h_team[i]>=50 && c_team[i]<100)
                     {
@@ -233,6 +236,10 @@ public class HandCricket
             {
                 if(h_ch!=c_ch)
                 {
+                    if(consecutiveWickets>0)
+                    {
+                        consecutiveWickets=0;
+                    }
                     if(h_ch==4)
                     {
                         String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
@@ -250,6 +257,7 @@ public class HandCricket
                 }
                 else
                 {
+                    consecutiveWickets+=1;
                     String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+h_team[i]+" runs");
@@ -257,17 +265,14 @@ public class HandCricket
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
                     }
-                    if(h_team[i]==0 && i!=0)
+                    if(h_team[i]==0 && consecutiveWickets==2)
                     {
                         System.out.println("THE BOWLER'S ON A HATTRICK");
-                        if((i-1)>0)
-                        {
-                            if(h_team[i-1]==0)
-                            {
-                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                            }
-                        }
-                        
+                    }
+                    else if(h_team[i]==0 && consecutiveWickets==3)
+                    {
+                        System.out.println("THE BOWLER'S GOT A  HATTRICK!!!!WHAT A BRILLIANT SPELL");
+                        consecutiveWickets=0;
                     }
                     else if(h_team[i]>=50 && h_team[i]<100)
                     {
@@ -308,6 +313,10 @@ public class HandCricket
             {
                 if(h_ch!=c_ch)
                 {
+                    if(consecutiveWickets>0)
+                    {
+                        consecutiveWickets=0;
+                    }
                     if(c_ch==4)
                     {
                         String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
@@ -324,6 +333,7 @@ public class HandCricket
                 }
                 else
                 {
+                    consecutiveWickets+=1;
                     String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+c_team[i]+" runs");
@@ -331,17 +341,14 @@ public class HandCricket
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
                     }
-                    if(c_team[i]==0 && i!=0)
+                    if(c_team[i]==0 && consecutiveWickets==2)
                     {
                         System.out.println("THE BOWLER'S ON A HATTRICK");
-                        if((i-1)>0)
-                        {
-                            if(c_team[i-1]==0)
-                            {
-                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                            }
-                        }
-                        
+                    }
+                    else if(c_team[i]==0 && consecutiveWickets==3)
+                    {
+                        System.out.println("THE BOWLER'S GOT A  HATTRICK!!!!WHAT A BRILLIANT SPELL");
+                        consecutiveWickets=0;
                     }
                     else if(c_team[i]>=50 && c_team[i]<100)
                     {
@@ -381,6 +388,10 @@ public class HandCricket
             {
                 if(h_ch!=c_ch)
                 {
+                    if(consecutiveWickets>0)
+                    {
+                        consecutiveWickets=0;
+                    }
                     if(c_ch==4)
                     {
                         String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
@@ -398,6 +409,7 @@ public class HandCricket
                 }
                 else
                 {
+                    consecutiveWickets+=1;
                     String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
                     System.out.println(msgW[sr2.nextInt(msgW.length)]);
                     System.out.println("The batsman scored "+c_team[i]+" runs");
@@ -405,17 +417,14 @@ public class HandCricket
                     {
                         System.out.println("THE BATSMAN's OUT FOR A DUCK");
                     }
-                    if(c_team[i]==0 && i!=0)
+                    if(c_team[i]==0 && consecutiveWickets==2)
                     {
                         System.out.println("THE BOWLER'S ON A HATTRICK");
-                        if((i-1)>0)
-                        {
-                            if(c_team[i-1]==0)
-                            {
-                                System.out.println("HATTRICK!! THIS IS A BRILLIANT SPELL OF BOWLING");
-                            }
-                        }
-                        
+                    }
+                    else if(c_team[i]==0 && consecutiveWickets==3)
+                    {
+                        System.out.println("THE BOWLER'S GOT A  HATTRICK!!!!WHAT A BRILLIANT SPELL");
+                        consecutiveWickets=0;
                     }
                     else if(c_team[i]>=50 && c_team[i]<100)
                     {
