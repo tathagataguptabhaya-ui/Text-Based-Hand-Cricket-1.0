@@ -258,7 +258,7 @@ public class HandCricket
                         if(i!=0)
                         {
                             System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>=0)
+                            if((i-1)>0)
                             {
                                 if(h_team[i-1]==0)
                                 {
@@ -267,7 +267,7 @@ public class HandCricket
                             }
                         }
                     }
-                    else if(h_team[i]>=50 && c_team[i]<100)
+                    else if(h_team[i]>=50 && h_team[i]<100)
                     {
                         System.out.println("That was a great innings as the player departs for a well made half century!!");
                     }
@@ -277,7 +277,7 @@ public class HandCricket
                     }
                     else if(h_team[i]>=100)
                     {
-                        System.out.println("What a knock under pressure!!!The player departs for a well made century and has helped his team to get closer to a dominating position in this match");
+                        System.out.println("What a knock under pressure!!!The player departs for a well made century and has helped his team to get closer to the target in this match");
                     }
                     h_wickets_lost+=1;
                     System.out.println("The score is "+ h_team_score+"/"+ h_wickets_lost);
@@ -331,7 +331,7 @@ public class HandCricket
                         if(i!=0)
                         {
                             System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>=0)
+                            if((i-1)>0)
                             {
                                 if(c_team[i-1]==0)
                                 {
@@ -404,7 +404,7 @@ public class HandCricket
                         if(i!=0)
                         {
                             System.out.println("THE BOWLER'S ON A HATTRICK");
-                            if((i-1)>=0)
+                            if((i-1)>0)
                             {
                                 if(c_team[i-1]==0)
                                 {
@@ -423,7 +423,7 @@ public class HandCricket
                     }
                     else if(c_team[i]>=100)
                     {
-                        System.out.println("What a knock!!!The player departs for a well made century and has helped his team to get to a dominating position in this match");
+                        System.out.println("What a knock!!!The player departs for a well made century and has helped his team to get to the target in this match");
                     }
                     c_wickets_lost+=1;
                     System.out.println("The score is "+ c_team_score+"/"+ c_wickets_lost);
