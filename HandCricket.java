@@ -1,0 +1,605 @@
+import java.security.SecureRandom;
+import java.util.Scanner;
+public class HandCricket 
+{
+    static int h_team[]=new int[10];
+    static int c_team[]=new int[10];
+    static int target;//checks the target
+    static int h_team_score=0;//takes the sum of all the players in the h_team
+    static int c_team_score=0;////takes the sum of all the players in the c_team
+    static String h_choice;//human_player's choice after winning toss
+    static String c_choice;//cpu player's choice in the ball after winning toss
+    static int h_wickets_lost=0;//keeps track of h_team's wickets
+    static int c_wickets_lost=0;//keeps track of c_team's wickets
+    static int h_wins=0;//keeps track of h_team's win in a series
+    static int cpu_wins=0;//keeps track of c_team's win in a series
+    static int wickets=0;
+
+    public static void main(String[] args)
+    {
+    for(int io=0;io<10;io++)
+    {
+        h_team[io]=0;
+    }
+    for(int jo=0;jo<10;jo++)
+    {
+        c_team[jo]=0;
+    }
+    SecureRandom  sr = new SecureRandom() ;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("WELCOME TO THE PAYTM HUMAN VS AI INFINITE BALL IN THEORY SERIES LIVE FROM YOUR OWN COMPUTER MEMORY SPONSORED BY JDK 25 AND VSCODE 2025-FOREVER");
+    System.out.println("Enter the number of wickets you want to play with ");
+    wickets=sc.nextInt();
+    while(wickets>10||wickets==0)
+    {
+        System.out.println("CANNOT EXCEED 10 wickets. PLEASE ENTER THE NUMBER OF WICKETS AGAIN!!!");
+        wickets=sc.nextInt();
+    }
+    sc.nextLine();
+    System.out.println("Please state the amount of matches you want your memory to suffer from: ");
+    int m=sc.nextInt();
+    sc.nextLine();
+    for(int i = 1; i<=m;i++)
+    {
+            System.out.println("WELCOME TO MATCH. I AM R@V1 SH@5TR1 LIVE FROM THE COMPUTER MAIN MEMORY AND HERE IS THE TOSS MASTER. WHAT DOES THE TOSS MACHINE HAVE FOR US TODAY"+ i);
+            if (h_wins==(int)(m/2) && cpu_wins==((int)(m/2)) )
+            {
+                String msg_SD[]={"IT’S THE BIG ONE, THE FINAL FRONTIER, THE WINNER TAKES IT ALL-----WELCOME TO THE GRAND FINALE!","THE ATMOSPHERE IS ELECTRIC, THE TENSION IS PALPABLE... IT’S TIME TO RUMBLE!","LOOK AT THE CROWD, LISTEN TO THE NOISE! IT’S PANDEMONIUM HERE FOR THE FINAL SHOWDOWN!",String.format("IT’S %d-%d, IT’S THE GRAND STAGE, AND SOMEONE IS ABOUT TO BECOME A HERO!", h_wins, cpu_wins)};
+                System.out.println(msg_SD[sr.nextInt(msg_SD.length)]);
+            }
+            else if(h_wins<cpu_wins)
+            {
+                System.out.println("CAN THE HUMANS COME BACK FROM GETTING OWNED IN THE LAST MATCH BY WHAT CAN BE DESCRIBED AS COMPUTAIONAL BRILLIANCE??");
+            }
+            else if(h_wins>cpu_wins)
+            {
+                System.out.println("DEFEATING THE HUMAN IS NOT AN EASY TASK AS THE SCIENTISTS THOUGHT IT WOULD BE.CAN THEY CACULATE THEIR WAY BACK INTO THIS SERIES??ONLY TIME WILL TELL");
+            }
+            else if((h_wins==cpu_wins)&&(h_wins<((int)(m/2)-1))&&(h_wins!=0))
+            {
+                System.out.println("OOH THE SERIES HAS BEEN LEVELLED IT SEEMS!! CRACKER OF A MATCH THIS WILL BE!!!");
+            }
+            else if (((h_wins>((int)(m/2)-1))||(cpu_wins>((int)(m/2)+1)))&&(h_wins!=0&&cpu_wins!=0))
+            {
+                System.out.println("Nothing but pride and consolation is on the line as the series has been decided already.");
+            }
+
+            int a=toss();
+            if(a==1)//if human wins
+            {
+            System.out.println("O captain, my captain, what do you choose to do first?");
+            h_choice= sc.next();
+            if(h_choice.equalsIgnoreCase("BAT"))
+            {
+                System.out.println("You won the toss and grace the computer world by batting first");
+                System.out.println("PLAY ON!!!!");
+                h_bat();
+                target=h_team_score+1;
+                System.out.println("The target for the computer is "+target);
+                h_bowl(target);
+                summary(h_choice);
+            }
+            if(h_choice.equalsIgnoreCase("BOWL"))
+            {
+                System.out.println("You won the toss and grace the computer world by bowling first");
+                System.out.println("PLAY ON!!!!!!!");
+                h_bowl();
+                target=c_team_score+1;
+                System.out.println("The target for the human is "+target);
+                h_bat(target);
+                summary(h_choice);
+            }
+        }
+        else if(a==2)//cpu wins
+        {
+            System.out.println("Beep Boop Beep Boop");
+            System.out.println("Win Toss: affirmative");
+            c_choice=sr.nextBoolean() ? "BAT" : "BOWL";
+            if(c_choice.equalsIgnoreCase("BAT"))
+            {
+                System.out.println("Cpu wins the toss and chooses to bat");
+                System.out.println("PLAY ON!!!!!");
+                h_bowl();
+                target=c_team_score+1;
+                System.out.println("The target for the human is "+target);
+                h_bat(target);
+                summaryCPU(c_choice);
+            }
+            else
+            {
+                System.out.println("Cpu wins the toss and chooses to bowl");
+                System.out.println("PLAY ON!!!!");
+                h_bat();
+                target=h_team_score+1;
+                System.out.println("The target for the computer is "+target);
+                h_bowl(target);
+                summaryCPU(c_choice);
+            }
+        }
+        java.util.Arrays.fill(h_team, 0);
+        java.util.Arrays.fill(c_team, 0);
+        h_team_score=0;
+        c_team_score=0;
+        h_wickets_lost=0;
+        c_wickets_lost=0;
+    }
+    if(h_wins>cpu_wins)
+    {
+        System.out.println("HUMANS ARE THE VICTORS. THEY STAND TALL AFTER DEFEATING THEIR CPU SLAVES BY A MARGIN OF "+h_wins+"-"+cpu_wins);
+        if(cpu_wins==0)
+        {
+            System.out.println("Damn son ya really know the randomness of a computer. You just whitewashed your machine just like Gopi Bahu!!!");
+        }
+    }
+    else if(cpu_wins>h_wins)
+    {
+        System.out.println("HUMAN!! BOW DOWN TO YOUR MACHINE!!! YOU GOT TERMINATED BY A MARGIN OF"+cpu_wins+"-"+h_wins);
+        if(h_wins==0)
+        {
+            System.out.println("Damn son ya got toasted by a computer. You just got whitewashed by your machine but atleast you are not the English playing an Ashes down under!!!");
+        }
+    }
+    }
+
+    static int toss()
+    {
+        SecureRandom sr1 = new SecureRandom();
+        return sr1.nextBoolean() ? 1:2;
+    }
+
+    static void h_bat()
+    {
+        SecureRandom sr2= new SecureRandom();
+        Scanner sc = new Scanner(System.in);
+        int i=0;
+        while(h_wickets_lost<wickets)
+        {
+            int h_ch=sc.nextInt();
+            int c_ch= 1 + sr2.nextInt(6);
+            if(h_ch>0 && h_ch<7)
+            {
+                if(h_ch!=c_ch)
+                {
+                    if(h_ch==4)
+                    {
+                        String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
+                        System.out.println(msg4[sr2.nextInt(msg4.length)]);
+                    }
+                    else if(h_ch==6)
+                    {
+                        String msg6[]={"THAT'S GONE MILES INTO THE BYTE FAN STANDS FOR A MAXIMUM!!!!!","THAT IS ABSOLUTUELY MASSIVE!!!","GONE INTO THE NIGHT SKY AND ITS NEVER COMING BACK","NOW THATS 6 BYTES THAT THE PLAYER HAS FOREVER SENT TO THE GARBAGE COLLECTOR!!!!"};
+                        System.out.println(msg6[sr2.nextInt(msg6.length)]);
+                    }
+                    h_team[i]+=h_ch;
+                    h_team_score+=h_ch;
+                    System.out.println("The score is "+h_team_score+"/"+h_wickets_lost);
+                }
+                else
+                {
+                    String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
+                    System.out.println(msgW[sr2.nextInt(msgW.length)]);
+                    System.out.println("The batsman scored "+h_team[i]+" runs");
+                    h_wickets_lost+=1;
+                    System.out.println("The score is "+ h_team_score+"/"+ h_wickets_lost);
+                    i+=1;
+                }
+            }
+            else
+            {
+                System.out.println("Please enter a run between 1-6");
+                continue;
+            }
+        }
+    }
+
+    static void h_bat(int target)
+    {
+        SecureRandom sr2= new SecureRandom();
+        Scanner sc = new Scanner(System.in);
+        int i=0;
+        while(h_wickets_lost<wickets && h_team_score<target)
+        {
+            int h_ch=sc.nextInt();
+            int c_ch= 1 + sr2.nextInt(6);
+            if(h_ch>0 && h_ch<7)
+            {
+                if(h_ch!=c_ch)
+                {
+                    if(h_ch==4)
+                    {
+                        String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
+                        System.out.println(msg4[sr2.nextInt(msg4.length)]);
+                    }
+                    else if(h_ch==6)
+                    {
+                        String msg6[]={"THAT'S GONE MILES INTO THE BYTE FAN STANDS FOR A MAXIMUM!!!!!","THAT IS ABSOLUTUELY MASSIVE!!!","GONE INTO THE NIGHT SKY AND ITS NEVER COMING BACK","NOW THATS 6 BYTES THAT THE PLAYER HAS FOREVER SENT TO THE GARBAGE COLLECTOR!!!!"};
+                        System.out.println(msg6[sr2.nextInt(msg6.length)]);
+                    }
+                    h_team[i]+=h_ch;
+                    h_team_score+=h_ch;
+                    System.out.println("The score is "+h_team_score+"/"+h_wickets_lost);
+                    System.out.println("The team need "+(target-h_team_score)+" runs to win");
+                }
+                else
+                {
+                    String msgW[] ={"THE UMPIRE SAYS THAT THE PLAYER'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
+                    System.out.println(msgW[sr2.nextInt(msgW.length)]);
+                    System.out.println("The batsman scored "+h_team[i]+" runs");
+                    h_wickets_lost+=1;
+                    System.out.println("The score is "+ h_team_score+"/"+ h_wickets_lost);
+                    i+=1;
+                    System.out.println("Humans need "+(target-h_team_score)+" runs to win");
+                }
+            }
+            else
+            {
+                System.out.println("Please enter a run between 1-6");
+                continue;
+            }
+        }
+    }
+
+    static void h_bowl()
+    {
+        SecureRandom sr2= new SecureRandom();
+        Scanner sc = new Scanner(System.in);
+        int i=0;
+        while(c_wickets_lost<wickets)
+        {
+            int h_ch=sc.nextInt();
+            int c_ch= 1 + sr2.nextInt(6);
+            if(h_ch>0 && h_ch<7)
+            {
+                if(h_ch!=c_ch)
+                {
+                    if(c_ch==4)
+                    {
+                        String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
+                        System.out.println(msg4[sr2.nextInt(msg4.length)]);
+                    }
+                    else if(c_ch==6)
+                    {
+                        String msg6[]={"THAT'S GONE MILES INTO THE BYTE FAN STANDS FOR A MAXIMUM!!!!!","THAT IS ABSOLUTUELY MASSIVE!!!","GONE INTO THE NIGHT SKY AND ITS NEVER COMING BACK","NOW THATS 6 BYTES THAT THE PLAYER HAS FOREVER SENT TO THE GARBAGE COLLECTOR!!!!"};
+                        System.out.println(msg6[sr2.nextInt(msg6.length)]);
+                    }
+                    c_team[i]+=c_ch;
+                    c_team_score+=c_ch;
+                    System.out.println("The score is "+c_team_score+"/"+c_wickets_lost);
+                }
+                else
+                {
+                    String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
+                    System.out.println(msgW[sr2.nextInt(msgW.length)]);
+                    System.out.println("The batsman scored "+c_team[i]+" runs");
+                    c_wickets_lost+=1;
+                    System.out.println("The score is "+ c_team_score+"/"+ c_wickets_lost);
+                    i+=1;
+                }
+            }
+            else
+            {
+                System.out.println("Please enter a run between 1-6");
+                continue;
+            }
+        }
+    }
+
+    static void h_bowl(int target)
+    {
+        SecureRandom sr2= new SecureRandom();
+        Scanner sc = new Scanner(System.in);
+        int i=0;
+        while(c_wickets_lost<wickets && c_team_score<target)
+        {
+            int h_ch=sc.nextInt();
+            int c_ch= 1 + sr2.nextInt(6);
+            if(h_ch>0 && h_ch<7)
+            {
+                if(h_ch!=c_ch)
+                {
+                    if(c_ch==4)
+                    {
+                        String msg4[]={"THATS GONE TO THE BOUNDARY LIKE A TRACER BULLET!!!!!!","HERE,COME THE BOWLER, AND HERE GOES THE BOWLER!!4 RUNS","FOUR OF THE FINEST THROUGH THE COVERS","THATS A SHOT WORTH FRAMING IN THE LOUVRE","CREAMED THROUGH THE RAM FOR A FOUR","THAT SHOT WAS SO IMMACULATE THAT THIS STRING TOOK ONLY 4 BYTES TO PRINT(JUST A JOKE)","1 2 3 4, AND THE BOWLER'S GONE FOR A STROLL"};
+                        System.out.println(msg4[sr2.nextInt(msg4.length)]);
+                    }
+                    else if(c_ch==6)
+                    {
+                        String msg6[]={"THAT'S GONE MILES INTO THE BYTE FAN STANDS FOR A MAXIMUM!!!!!","THAT IS ABSOLUTUELY MASSIVE!!!","GONE INTO THE NIGHT SKY AND ITS NEVER COING BACK","NOW THATS 6 BYTES THAT THE PLAYER HAS FOREVER SENT TO THE GARBAGE COLLECTOR!!!!",""};
+                        System.out.println(msg6[sr2.nextInt(msg6.length)]);
+                    }
+                    c_team[i]+=c_ch;
+                    c_team_score+=c_ch;
+                    System.out.println("The score is "+c_team_score+"/"+c_wickets_lost);
+                    System.out.println("CPU need "+(target-c_team_score)+" runs to win");
+                }
+                else
+                {
+                    String msgW[] ={"THE PLAYER SAYS THAT THE RAM'S ALOCATION TIME IS OVER!!! OUT IT GOES TO THE GARBAGE COLLECTOR","OH WHAT A DELIVERY,THAT JUST RIPPED THE STUMP IN HALF!!!!!","AND THE FINGER IS RAISED. THE BATSMAN DID EVERYTHING BUT COULD NOT KEEP THE BALL AWAY FROM HIS PADS!!!","EDGED AND GONE!!!!!!!","WHAT A SENSATIONAL CATCH OFF AN OTHERWISE AVERAGE DELIVERY","THE BATSMAN AND THE STUMPS ARE GONE WITH THE WIND!!!!!!!","THIS BALL HAD THE NAME OF THE BATSMAN.","THE DREADED FINGER HAS BEEN RAISED BY THE UMPIRE,OUT GOES THE BATSMAN BACK TO HIS PAVILLION"};
+                    System.out.println(msgW[sr2.nextInt(msgW.length)]);
+                    System.out.println("The batsman scored "+c_team[i]+" runs");
+                    c_wickets_lost+=1;
+                    System.out.println("The score is "+ c_team_score+"/"+ c_wickets_lost);
+                    i+=1;
+                    System.out.println("CPU need "+(target-c_team_score)+" runs to win");
+                }
+            }
+            else
+            {
+                System.out.println("Please enter a run between 1-6");
+                continue;
+            }
+        }
+    }
+
+    static void summary(String h_choice)
+    {
+        if(h_choice.equalsIgnoreCase("BAT"))
+        {
+            if(h_team_score>c_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|   HUMAN          %3d     |%n", h_team_score);
+                System.out.printf("|   CPU            %3d     |%n", c_team_score);
+                System.out.println("----------------------------");
+                System.out.println("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
+                h_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }        
+            else if(c_team_score>h_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score);
+                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost);
+                System.out.println("----------------------------");
+                int wicketMargin = wickets - c_wickets_lost;
+                System.out.println("CPU WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                cpu_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+            else
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
+                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
+                System.out.println("----------------------------");
+                System.out.println("MATCH TIED");
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+        }
+        else
+        {
+            if(h_team_score>c_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score);
+                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost);
+                System.out.println("----------------------------");
+                int wicketMargin = wickets - h_wickets_lost;
+                System.out.println("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                h_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }        
+            else if(c_team_score>h_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|   CPU          %3d     |%n", c_team_score);
+                System.out.printf("|   HUMAN            %3d     |%n", h_team_score);
+                System.out.println("----------------------------");
+                System.out.println("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
+                cpu_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+            else
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
+                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
+                System.out.println("----------------------------");
+                System.out.println("MATCH TIED");
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+        
+        }
+    }
+
+    static void summaryCPU(String c_choice)
+    {
+        if(c_choice.equalsIgnoreCase("BAT"))
+        { 
+            if(h_team_score>c_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score);
+                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost);
+                System.out.println("----------------------------");
+                int wicketMargin = wickets - h_wickets_lost;
+                System.out.println("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                h_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }        
+            else if(c_team_score>h_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|   CPU          %3d     |%n", c_team_score);
+                System.out.printf("|   HUMAN            %3d     |%n", h_team_score);
+                System.out.println("----------------------------");
+                System.out.println("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
+                cpu_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+            else
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
+                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
+                System.out.println("----------------------------");
+                System.out.println("MATCH TIED");
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+        }
+        else
+        {
+            if(h_team_score>c_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|   HUMAN          %3d     |%n", h_team_score);
+                System.out.printf("|   CPU            %3d     |%n", c_team_score);
+                System.out.println("----------------------------");
+                System.out.println("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
+                h_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }        
+            else if(c_team_score>h_team_score)
+            {
+                System.out.println("----------------------------");
+                System.out.println("|   HUMAN                 "+h_team_score+"    |");
+                System.err.println("|   CPU              "+c_team_score+"/"+c_wickets_lost+"   |");
+                System.out.println("----------------------------");
+                System.out.println("CPU WON BY "+(wickets-c_wickets_lost)+" WICKETS");
+                cpu_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+            else
+            {
+                System.out.println("----------------------------");
+                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
+                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
+                System.out.println("----------------------------");
+                System.out.println("MATCH TIED");
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
+            }
+        }
+    }
+}
