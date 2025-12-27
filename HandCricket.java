@@ -69,7 +69,17 @@ public class HandCricket
             if(a==1)//if human wins
             {
             System.out.println("O captain, my captain, what do you choose to do first?");
-            h_choice= sc.next();
+            while (true) 
+            {
+                h_choice = sc.nextLine().trim().toUpperCase(); // Clean the input
+                if (h_choice.equalsIgnoreCase("BAT") || h_choice.equalsIgnoreCase("BOWL")) {
+                    break; // Valid input! Exit the loop
+                }
+                else 
+                {
+                    System.out.println("INVALID CHOICE! Please enter 'BAT' or 'BOWL':");
+                }
+            }
             if(h_choice.equalsIgnoreCase("BAT"))
             {
                 System.out.println("You won the toss and grace the computer world by batting first");
