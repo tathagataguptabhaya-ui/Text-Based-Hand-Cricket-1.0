@@ -498,7 +498,7 @@ public class HandCricket
             {
                 System.out.println("----------------------------");
                 System.out.printf("|   CPU          %3d     |%n", c_team_score);
-                System.out.printf("|   HUMAN            %3d |%n", h_team_score);
+                System.out.printf("|   HUMAN        %3d     |%n", h_team_score);
                 System.out.println("----------------------------");
                 System.out.println("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
                 cpu_wins+=1;
