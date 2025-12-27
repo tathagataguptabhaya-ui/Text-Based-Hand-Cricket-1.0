@@ -75,6 +75,7 @@ public class HandCricket
                 System.out.println("You won the toss and grace the computer world by batting first");
                 System.out.println("PLAY ON!!!!");
                 h_bat();
+                consecutiveWickets=0;
                 target=h_team_score+1;
                 System.out.println("The target for the computer is "+target);
                 h_bowl(target);
@@ -85,6 +86,7 @@ public class HandCricket
                 System.out.println("You won the toss and grace the computer world by bowling first");
                 System.out.println("PLAY ON!!!!!!!");
                 h_bowl();
+                consecutiveWickets=0;
                 target=c_team_score+1;
                 System.out.println("The target for the human is "+target);
                 h_bat(target);
@@ -101,6 +103,7 @@ public class HandCricket
                 System.out.println("Cpu wins the toss and chooses to bat");
                 System.out.println("PLAY ON!!!!!");
                 h_bowl();
+                consecutiveWickets=0;
                 target=c_team_score+1;
                 System.out.println("The target for the human is "+target);
                 h_bat(target);
@@ -111,6 +114,7 @@ public class HandCricket
                 System.out.println("Cpu wins the toss and chooses to bowl");
                 System.out.println("PLAY ON!!!!");
                 h_bat();
+                consecutiveWickets=0;
                 target=h_team_score+1;
                 System.out.println("The target for the computer is "+target);
                 h_bowl(target);
