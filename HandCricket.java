@@ -100,7 +100,7 @@ public class HandCricket
     SecureRandom  sr = new SecureRandom() ;
     Scanner sc = new Scanner(System.in);
     LocalDateTime now = LocalDateTime.now();
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("h:mm a");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd, yyyy - h:mm a");
     dualPrint("\n" + "=".repeat(40));
     dualPrint("SESSION STARTED AT " + now.format(dtf));
 
