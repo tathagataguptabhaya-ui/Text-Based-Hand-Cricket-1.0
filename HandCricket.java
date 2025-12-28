@@ -1,5 +1,6 @@
 import java.security.SecureRandom;
 import java.util.Scanner;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -20,6 +21,9 @@ public class HandCricket
     static int h_wins=0;//keeps track of h_team's win in a series
     static int cpu_wins=0;//keeps track of c_team's win in a series
     static int wickets=0;
+    static int match_ties=0;
+    static int totalMatches = 0, totalHWin = 0, totalCWin = 0, totalMTies = 0;
+    static int totalHSeries = 0, totalCSeries = 0, totalSTies = 0;
 
     static void dualPrint(String text) {
         System.out.println(text); // Print to console
@@ -30,8 +34,33 @@ public class HandCricket
             System.out.println("Error writing to file: " + e.getMessage());
         }
     }
+    static void loadHistoricalStats() {
+        File file = new File("stats.txt");
+        if (!file.exists()) return;
+        try (Scanner fs = new Scanner(file)) {
+            if (fs.hasNextInt()) totalMatches = fs.nextInt();
+            if (fs.hasNextInt()) totalHWin = fs.nextInt();
+            if (fs.hasNextInt()) totalCWin = fs.nextInt();
+            if (fs.hasNextInt()) totalMTies = fs.nextInt();
+            if (fs.hasNextInt()) totalHSeries = fs.nextInt();
+            if (fs.hasNextInt()) totalCSeries = fs.nextInt();
+            if (fs.hasNextInt()) totalSTies = fs.nextInt();
+        } catch (Exception e) {
+            System.out.println("Could not load history.");
+        }
+    }
+
+    static void saveHistoricalStats() {
+        try (PrintWriter pw = new PrintWriter(new FileWriter("stats.txt"))) {
+            pw.println(totalMatches + " " + totalHWin + " " + totalCWin + " " + totalMTies + " " +
+                       totalHSeries + " " + totalCSeries + " " + totalSTies);
+        } catch (IOException e) {
+            System.out.println("Could not save history.");
+        }
+    }
     public static void main(String[] args)
     {
+    loadHistoricalStats();
     SecureRandom  sr = new SecureRandom() ;
     Scanner sc = new Scanner(System.in);
     LocalDateTime now = LocalDateTime.now();
@@ -177,6 +206,24 @@ public class HandCricket
             System.out.println("Damn son ya got toasted by a computer. You just got whitewashed by your machine but atleast you are not the English playing an Ashes down under!!!");
         }
     }
+    else
+    {
+        match_ties+=1;
+    }
+    totalMatches += m;
+    totalHWin += h_wins;
+    totalCWin += cpu_wins;
+    totalMTies += match_ties;
+    dualPrint("\n==HISTORICAL STATS==");
+    dualPrint("1. matches played: " + totalMatches);
+    dualPrint("2. matches won by humans: " + totalHWin);
+    dualPrint("3. matches won by cpu: " + totalCWin);
+    dualPrint("4. MATCHES TIED: " + totalMTies);
+    dualPrint("5. SERIES WON BY HUMANS: " + totalHSeries);
+    dualPrint("6. SERIES WON BY CPU: " + totalCSeries);
+    dualPrint("7. SERIES TIED: " + totalSTies);
+
+        saveHistoricalStats();
     }
 
     static int toss()
