@@ -18,14 +18,6 @@ public class HandCricket
 
     public static void main(String[] args)
     {
-    for(int io=0;io<10;io++)
-    {
-        h_team[io]=0;
-    }
-    for(int jo=0;jo<10;jo++)
-    {
-        c_team[jo]=0;
-    }
     SecureRandom  sr = new SecureRandom() ;
     Scanner sc = new Scanner(System.in);
     System.out.println("WELCOME TO THE PAYTM HUMAN VS AI INFINITE BALL IN THEORY SERIES LIVE FROM YOUR OWN COMPUTER MEMORY SPONSORED BY JDK 25 AND VSCODE 2025-FOREVER");
@@ -33,10 +25,18 @@ public class HandCricket
     wickets=sc.nextInt();
     while(wickets>10||wickets==0)
     {
-        System.out.println("CANNOT EXCEED 10 wickets. PLEASE ENTER THE NUMBER OF WICKETS AGAIN!!!");
+        System.out.println("CANNOT EXCEED 10 wickets or BE LESS THAN 0 wicket. PLEASE ENTER THE NUMBER OF WICKETS AGAIN!!!");
         wickets=sc.nextInt();
     }
     sc.nextLine();
+    for(int io=0;io<wickets;io++)
+    {
+        h_team[io]=0;
+    }
+    for(int jo=0;jo<wickets;jo++)
+    {
+        c_team[jo]=0;
+    }
     System.out.println("Please state the amount of matches you want your memory to suffer from: ");
     int m=sc.nextInt();
     sc.nextLine();
@@ -493,6 +493,8 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
+                int lIndex=c_team.length-1;
+                System.out.println("The batter scored "+c_team[lIndex]+" runs");
                 System.out.println("----------------------------");
                 System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score);
                 System.out.printf("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost);
@@ -538,6 +540,8 @@ public class HandCricket
         {
             if(h_team_score>c_team_score)
             {
+                int lIndex=h_team.length-1;
+                System.out.println("The batter scored "+h_team[lIndex]+" runs");
                 System.out.println("----------------------------");
                 System.out.printf("| %-15s %7s |%n", "CPU", c_team_score);
                 System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost);
@@ -606,7 +610,8 @@ public class HandCricket
     static void summaryCPU(String c_choice)
     {
         if(c_choice.equalsIgnoreCase("BAT"))
-        { 
+        {
+            
             if(h_team_score>c_team_score)
             {
                 System.out.println("----------------------------");
