@@ -24,6 +24,7 @@ public class HandCricket
     static int cpu_wins=0;//keeps track of c_team's win in a series
     static int wickets=0;
     static int match_ties=0;
+    static int lastNotOut=0;
     static int totalMatches = 0, totalHWin = 0, totalCWin = 0, totalMTies = 0;
     static int totalHSeries = 0, totalCSeries = 0, totalSTies = 0;
 
@@ -420,6 +421,10 @@ public class HandCricket
                 continue;
             }
         }
+        if(h_team_score>=target)
+        {
+            lastNotOut=i;
+        }
     }
 
     static void h_bowl()
@@ -572,6 +577,10 @@ public class HandCricket
                 continue;
             }
         }
+        if(c_team_score>=target)
+        {
+            lastNotOut=i;
+        }
     }
 
     static void summary(String h_choice)
@@ -601,8 +610,7 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
-                int lIndex=c_team.length-1;
-                System.out.println("The batter scored "+c_team[lIndex]+" runs");
+                System.out.println("The batter scored "+c_team[lastNotOut]+" runs");
                 dualPrint("----------------------------");
                 dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score));
                 dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost));
