@@ -253,14 +253,6 @@ public class HandCricket
     totalHWin += h_wins;
     totalCWin += cpu_wins;
     totalMTies += match_ties;
-    dualPrint("\n==HISTORICAL STATS==");
-    dualPrint("1. matches played: " + totalMatches);
-    dualPrint("2. matches won by humans: " + totalHWin);
-    dualPrint("3. matches won by cpu: " + totalCWin);
-    dualPrint("4. MATCHES TIED: " + totalMTies);
-    dualPrint("5. SERIES WON BY HUMANS: " + totalHSeries);
-    dualPrint("6. SERIES WON BY CPU: " + totalCSeries);
-    dualPrint("7. SERIES TIED: " + totalSTies);
 
         saveHistoricalStats();
         updateFileStructure();
