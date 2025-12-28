@@ -212,7 +212,7 @@ public class HandCricket
                         System.out.println("THE BOWLER'S GOT A  HATTRICK!!!!WHAT A BRILLIANT SPELL");
                         consecutiveWickets=0;
                     }
-                    else if(h_team[i]>=50 && c_team[i]<100)
+                    else if(h_team[i]>=50 && h_team[i]<100)
                     {
                         System.out.println("That was a great innings as the player departs for a well made half century!!");
                     }
