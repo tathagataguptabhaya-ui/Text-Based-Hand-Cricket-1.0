@@ -192,6 +192,7 @@ public class HandCricket
     }
     if(h_wins>cpu_wins)
     {
+        totalHSeries+=1;
         dualPrint("HUMANS ARE THE VICTORS. THEY STAND TALL AFTER DEFEATING THEIR CPU SLAVES BY A MARGIN OF "+h_wins+"-"+cpu_wins);
         if(cpu_wins==0)
         {
@@ -201,6 +202,7 @@ public class HandCricket
     else if(cpu_wins>h_wins)
     {
         dualPrint("HUMAN!! BOW DOWN TO YOUR MACHINE!!! YOU GOT TERMINATED BY A MARGIN OF"+cpu_wins+"-"+h_wins);
+        totalCSeries+=1;
         if(h_wins==0)
         {
             System.out.println("Damn son ya got toasted by a computer. You just got whitewashed by your machine but atleast you are not the English playing an Ashes down under!!!");
@@ -208,7 +210,8 @@ public class HandCricket
     }
     else
     {
-        match_ties+=1;
+        System.out.println("After everything that happened, I must say I would have felt bad if this series had a winner.WHAT A THRILLING FINISH");
+        totalSTies+=1;
     }
     totalMatches += m;
     totalHWin += h_wins;
@@ -592,6 +595,7 @@ public class HandCricket
                 dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
                 dualPrint("----------------------------");
                 dualPrint("MATCH TIED");
+                match_ties+=1;
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -660,6 +664,7 @@ public class HandCricket
                 dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
                 dualPrint("----------------------------");
                 dualPrint("MATCH TIED");
+                match_ties+=1;
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -747,6 +752,7 @@ public class HandCricket
                 dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
                 dualPrint("----------------------------");
                 dualPrint("MATCH TIED");
+                match_ties+=1;
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -815,6 +821,7 @@ public class HandCricket
                 dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
                 dualPrint("----------------------------");
                 dualPrint("MATCH TIED");
+                match_ties+=1;
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
