@@ -7,3 +7,7 @@ Allows you to play a match in the series between 1-10 wickets
 keeps track of series margin
 
 although can only play one series when the program is executed
+
+
+
+NOW IT ALSO SAVES YOUR SERIES STATISTICS
