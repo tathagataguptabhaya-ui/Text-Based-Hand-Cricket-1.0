@@ -650,8 +650,7 @@ public class HandCricket
         {
             if(h_team_score>c_team_score)
             {
-                int lIndex=h_team.length-1;
-                dualPrint("The batter scored "+h_team[lIndex]+" runs");
+                System.out.println("The batter scored "+h_team[lastNotOut]+" runs");
                 dualPrint("----------------------------");
                 dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score));
                 dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost));
@@ -725,8 +724,7 @@ public class HandCricket
             
             if(h_team_score>c_team_score)
             {
-                int lIndex=h_team.length-1;
-                dualPrint("The batter scored "+h_team[lIndex]+" runs");
+                System.out.println("The batter scored "+h_team[lastNotOut]+" runs");
                 dualPrint("----------------------------");
                 dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score));
                 dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost));
@@ -752,7 +750,7 @@ public class HandCricket
             {
                 dualPrint("----------------------------");
                 dualPrint(String.format("|   CPU          %3d     |%n", c_team_score));
-                dualPrint(String.format("|   HUMAN            %3d     |%n", h_team_score));
+                dualPrint(String.format("|   HUMAN        %3d     |%n", h_team_score));
                 dualPrint("----------------------------");
                 dualPrint("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
                 cpu_wins+=1;
@@ -816,8 +814,7 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
-                int lIndex=c_team.length-1;
-                System.out.println("The batter scored "+c_team[lIndex]+" runs");
+                System.out.println("The batter scored "+c_team[lastNotOut]+" runs");
                 dualPrint("----------------------------");
                 dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score));
                 dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost));
