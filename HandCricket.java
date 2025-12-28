@@ -745,19 +745,7 @@ public class HandCricket
                 {
                     System.out.println("THE SERIES HAS BEEN LEVELLED");
                 }
-                h_wins+=1;
-                if(h_wins>cpu_wins)
-                {
-                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
-                }
-                else if(cpu_wins>h_wins)
-                {
-                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
-                }
-                else
-                {
-                    System.out.println("THE SERIES HAS BEEN LEVELLED");
-                }
+                
             }        
             else if(c_team_score>h_team_score)
             {
