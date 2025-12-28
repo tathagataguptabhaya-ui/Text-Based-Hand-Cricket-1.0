@@ -1,11 +1,13 @@
-import java.security.SecureRandom;
-import java.util.Scanner;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 public class HandCricket 
 {
     static int consecutiveWickets=0;
@@ -32,6 +34,39 @@ public class HandCricket
             pw.println(text); // Append to file
         } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+    static void updateFileStructure() {
+        StringBuilder previousSummaries = new StringBuilder();
+        File file = new File("Cricket_History.txt");
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                boolean summaryStarted = false;
+                while ((line = reader.readLine()) != null) {
+                    // This flag ensures we only grab the "SESSION STARTED" parts and below
+                    if (line.contains("SESSION STARTED AT")) summaryStarted = true;
+                    if (summaryStarted) {
+                        previousSummaries.append(line).append("\n");
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("Error reading history.");
+            }
+        }
+        try (PrintWriter pw = new PrintWriter(new FileWriter("Cricket_History.txt"))) {
+            pw.println("==HISTORICAL STATS==");
+            pw.println("1. matches played: " + totalMatches);
+            pw.println("2. matches won by humans: " + totalHWin);
+            pw.println("3. matches won by cpu: " + totalCWin);
+            pw.println("4. MATCHES TIED: " + totalMTies);
+            pw.println("5. SERIES WON BY HUMANS: " + totalHSeries);
+            pw.println("6. SERIES WON BY CPU: " + totalCSeries);
+            pw.println("7. SERIES TIED: " + totalSTies);
+            pw.println("=".repeat(40));
+            pw.print(previousSummaries.toString());
+        } catch (IOException e) {
+            System.out.println("Error updating file structure.");
         }
     }
     static void loadHistoricalStats() {
