@@ -263,6 +263,7 @@ public class HandCricket
     dualPrint("7. SERIES TIED: " + totalSTies);
 
         saveHistoricalStats();
+        updateFileStructure();
     }
 
     static int toss()
