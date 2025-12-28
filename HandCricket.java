@@ -1,5 +1,10 @@
 import java.security.SecureRandom;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class HandCricket 
 {
     static int consecutiveWickets=0;
@@ -16,10 +21,25 @@ public class HandCricket
     static int cpu_wins=0;//keeps track of c_team's win in a series
     static int wickets=0;
 
+    static void dualPrint(String text) {
+        System.out.println(text); // Print to console
+        try (FileWriter fw = new FileWriter("Cricket_History.txt", true);
+            PrintWriter pw = new PrintWriter(fw)) {
+            pw.println(text); // Append to file
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
     public static void main(String[] args)
     {
     SecureRandom  sr = new SecureRandom() ;
     Scanner sc = new Scanner(System.in);
+    LocalDateTime now = LocalDateTime.now();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("h:mm a");
+    dualPrint("\n" + "=".repeat(40));
+    dualPrint("SESSION STARTED AT " + now.format(dtf));
+
+
     System.out.println("WELCOME TO THE PAYTM HUMAN VS AI INFINITE BALL IN THEORY SERIES LIVE FROM YOUR OWN COMPUTER MEMORY SPONSORED BY JDK 25 AND VSCODE 2025-FOREVER");
     System.out.println("Enter the number of wickets you want to play with ");
     wickets=sc.nextInt();
@@ -29,6 +49,8 @@ public class HandCricket
         wickets=sc.nextInt();
     }
     sc.nextLine();
+    dualPrint("wickets per match " + wickets);
+
     for(int io=0;io<wickets;io++)
     {
         h_team[io]=0;
@@ -39,6 +61,7 @@ public class HandCricket
     }
     System.out.println("Please state the amount of matches you want your memory to suffer from: ");
     int m=sc.nextInt();
+    dualPrint("series of " + m + " matches");
     sc.nextLine();
     for(int i = 1; i<=m;i++)
     {
@@ -140,7 +163,7 @@ public class HandCricket
     }
     if(h_wins>cpu_wins)
     {
-        System.out.println("HUMANS ARE THE VICTORS. THEY STAND TALL AFTER DEFEATING THEIR CPU SLAVES BY A MARGIN OF "+h_wins+"-"+cpu_wins);
+        dualPrint("HUMANS ARE THE VICTORS. THEY STAND TALL AFTER DEFEATING THEIR CPU SLAVES BY A MARGIN OF "+h_wins+"-"+cpu_wins);
         if(cpu_wins==0)
         {
             System.out.println("Damn son ya really know the randomness of a computer. You just whitewashed your machine just like Gopi Bahu!!!");
@@ -148,7 +171,7 @@ public class HandCricket
     }
     else if(cpu_wins>h_wins)
     {
-        System.out.println("HUMAN!! BOW DOWN TO YOUR MACHINE!!! YOU GOT TERMINATED BY A MARGIN OF"+cpu_wins+"-"+h_wins);
+        dualPrint("HUMAN!! BOW DOWN TO YOUR MACHINE!!! YOU GOT TERMINATED BY A MARGIN OF"+cpu_wins+"-"+h_wins);
         if(h_wins==0)
         {
             System.out.println("Damn son ya got toasted by a computer. You just got whitewashed by your machine but atleast you are not the English playing an Ashes down under!!!");
@@ -472,11 +495,11 @@ public class HandCricket
         {
             if(h_team_score>c_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.printf("|   HUMAN          %3d     |%n", h_team_score);
-                System.out.printf("|   CPU            %3d     |%n", c_team_score);
-                System.out.println("----------------------------");
-                System.out.println("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|   HUMAN          %3d     |%n", h_team_score));
+                dualPrint(String.format("|   CPU            %3d     |%n", c_team_score));
+                dualPrint("----------------------------");
+                dualPrint("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
                 h_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -495,12 +518,12 @@ public class HandCricket
             {
                 int lIndex=c_team.length-1;
                 System.out.println("The batter scored "+c_team[lIndex]+" runs");
-                System.out.println("----------------------------");
-                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score);
-                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost);
-                System.out.println("----------------------------");
+                dualPrint("----------------------------");
+                dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score));
+                dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost));
+                dualPrint("----------------------------");
                 int wicketMargin = wickets - c_wickets_lost;
-                System.out.println("CPU WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                dualPrint("CPU WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
                 cpu_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -517,11 +540,11 @@ public class HandCricket
             }
             else
             {
-                System.out.println("----------------------------");
-                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
-                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
-                System.out.println("----------------------------");
-                System.out.println("MATCH TIED");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
+                dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
+                dualPrint("----------------------------");
+                dualPrint("MATCH TIED");
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -541,13 +564,13 @@ public class HandCricket
             if(h_team_score>c_team_score)
             {
                 int lIndex=h_team.length-1;
-                System.out.println("The batter scored "+h_team[lIndex]+" runs");
-                System.out.println("----------------------------");
-                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score);
-                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost);
-                System.out.println("----------------------------");
+                dualPrint("The batter scored "+h_team[lIndex]+" runs");
+                dualPrint("----------------------------");
+                dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score));
+                dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost));
+                dualPrint("----------------------------");
                 int wicketMargin = wickets - h_wickets_lost;
-                System.out.println("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                dualPrint("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
                 h_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -564,11 +587,11 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.printf("|   CPU          %3d     |%n", c_team_score);
-                System.out.printf("|   HUMAN            %3d     |%n", h_team_score);
-                System.out.println("----------------------------");
-                System.out.println("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|   CPU          %3d     |%n", c_team_score));
+                dualPrint(String.format("|   HUMAN            %3d     |%n", h_team_score));
+                dualPrint("----------------------------");
+                dualPrint("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
                 cpu_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -585,11 +608,11 @@ public class HandCricket
             }
             else
             {
-                System.out.println("----------------------------");
-                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
-                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
-                System.out.println("----------------------------");
-                System.out.println("MATCH TIED");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
+                dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
+                dualPrint("----------------------------");
+                dualPrint("MATCH TIED");
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -614,12 +637,27 @@ public class HandCricket
             
             if(h_team_score>c_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.printf("| %-15s %7s |%n", "CPU", c_team_score);
-                System.out.printf("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost);
-                System.out.println("----------------------------");
+                int lIndex=h_team.length-1;
+                dualPrint("The batter scored "+h_team[lIndex]+" runs");
+                dualPrint("----------------------------");
+                dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score));
+                dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score + "/" + h_wickets_lost));
+                dualPrint("----------------------------");
                 int wicketMargin = wickets - h_wickets_lost;
-                System.out.println("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                dualPrint("HUMAN WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
+                h_wins+=1;
+                if(h_wins>cpu_wins)
+                {
+                    System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
+                }
+                else if(cpu_wins>h_wins)
+                {
+                    System.out.println("CPU lead the series "+cpu_wins+"-"+h_wins+"\n");
+                }
+                else
+                {
+                    System.out.println("THE SERIES HAS BEEN LEVELLED");
+                }
                 h_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -636,11 +674,11 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.printf("|   CPU          %3d     |%n", c_team_score);
-                System.out.printf("|   HUMAN        %3d     |%n", h_team_score);
-                System.out.println("----------------------------");
-                System.out.println("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|   CPU          %3d     |%n", c_team_score));
+                dualPrint(String.format("|   HUMAN            %3d     |%n", h_team_score));
+                dualPrint("----------------------------");
+                dualPrint("CPU WON BY " + (c_team_score - h_team_score) + " RUNS");
                 cpu_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -657,11 +695,11 @@ public class HandCricket
             }
             else
             {
-                System.out.println("----------------------------");
-                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
-                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
-                System.out.println("----------------------------");
-                System.out.println("MATCH TIED");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
+                dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
+                dualPrint("----------------------------");
+                dualPrint("MATCH TIED");
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
@@ -680,11 +718,11 @@ public class HandCricket
         {
             if(h_team_score>c_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.printf("|   HUMAN          %3d     |%n", h_team_score);
-                System.out.printf("|   CPU            %3d     |%n", c_team_score);
-                System.out.println("----------------------------");
-                System.out.println("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|   HUMAN          %3d     |%n", h_team_score));
+                dualPrint(String.format("|   CPU            %3d     |%n", c_team_score));
+                dualPrint("----------------------------");
+                dualPrint("HUMANS WON BY " + (h_team_score - c_team_score) + " RUNS");
                 h_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -701,11 +739,14 @@ public class HandCricket
             }        
             else if(c_team_score>h_team_score)
             {
-                System.out.println("----------------------------");
-                System.out.println("|   HUMAN                 "+h_team_score+"    |");
-                System.err.println("|   CPU              "+c_team_score+"/"+c_wickets_lost+"   |");
-                System.out.println("----------------------------");
-                System.out.println("CPU WON BY "+(wickets-c_wickets_lost)+" WICKETS");
+                int lIndex=c_team.length-1;
+                System.out.println("The batter scored "+c_team[lIndex]+" runs");
+                dualPrint("----------------------------");
+                dualPrint(String.format("| %-15s %7s |%n", "HUMAN", h_team_score));
+                dualPrint(String.format("| %-15s %7s |%n", "CPU", c_team_score + "/" + c_wickets_lost));
+                dualPrint("----------------------------");
+                int wicketMargin = wickets - c_wickets_lost;
+                dualPrint("CPU WON BY " + wicketMargin + (wicketMargin == 1 ? " WICKET" : " WICKETS"));
                 cpu_wins+=1;
                 if(h_wins>cpu_wins)
                 {
@@ -722,11 +763,11 @@ public class HandCricket
             }
             else
             {
-                System.out.println("----------------------------");
-                System.out.printf("|  %-10s %8d     |%n", "HUMAN", h_team_score);
-                System.out.printf("|  %-10s %8d     |%n", "CPU", c_team_score);
-                System.out.println("----------------------------");
-                System.out.println("MATCH TIED");
+                dualPrint("----------------------------");
+                dualPrint(String.format("|  %-10s %8d     |%n", "HUMAN", h_team_score));
+                dualPrint(String.format("|  %-10s %8d     |%n", "CPU", c_team_score));
+                dualPrint("----------------------------");
+                dualPrint("MATCH TIED");
                 if(h_wins>cpu_wins)
                 {
                     System.out.println("Humans lead the series "+h_wins+"-"+cpu_wins+"\n");
