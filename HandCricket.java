@@ -27,6 +27,20 @@ public class HandCricket
     static int lastNotOut=0;
     static int totalMatches = 0, totalHWin = 0, totalCWin = 0, totalMTies = 0;
     static int totalHSeries = 0, totalCSeries = 0, totalSTies = 0;
+    static void cpuThinkingDelay(String text) {
+        try {
+            System.out.print(text);
+            for (int i = 0; i < 3; i++) {
+                Thread.sleep(500); // 0.5 second pause
+                System.out.print(".");
+            }
+            System.out.println(); // New line after dots
+            Thread.sleep(300);    // Final brief pause for tension
+        } catch (InterruptedException e) {
+            // Restore interrupted status if the thread is woken up early
+            Thread.currentThread().interrupt();
+        }
+    }
 
     static void dualPrint(String text) {
         System.out.println(text); // Print to console
@@ -273,6 +287,8 @@ public class HandCricket
         {
             int h_ch=sc.nextInt();
             int c_ch= 1 + sr2.nextInt(6);
+            String txt="And the batsman is ready";
+            cpuThinkingDelay(txt);
             if(h_ch>0 && h_ch<7)
             {
                 if(h_ch!=c_ch)
@@ -348,6 +364,8 @@ public class HandCricket
         {
             int h_ch=sc.nextInt();
             int c_ch= 1 + sr2.nextInt(6);
+            String txt="And the batsman is ready";
+            cpuThinkingDelay(txt);
             if(h_ch>0 && h_ch<7)
             {
                 if(h_ch!=c_ch)
@@ -429,6 +447,8 @@ public class HandCricket
         {
             int h_ch=sc.nextInt();
             int c_ch= 1 + sr2.nextInt(6);
+            String txt = "And the bowler is ready at its runup mark";
+            cpuThinkingDelay(txt);
             if(h_ch>0 && h_ch<7)
             {
                 if(h_ch!=c_ch)
@@ -504,6 +524,8 @@ public class HandCricket
         {
             int h_ch=sc.nextInt();
             int c_ch= 1 + sr2.nextInt(6);
+            String txt="Here comes the bowler";
+            cpuThinkingDelay(txt);
             if(h_ch>0 && h_ch<7)
             {
                 if(h_ch!=c_ch)
