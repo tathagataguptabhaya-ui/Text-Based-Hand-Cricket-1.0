@@ -11,3 +11,8 @@ although can only play one series when the program is executed
 
 
 NOW IT ALSO SAVES YOUR SERIES STATISTICS
+And now it also has......
+.
+.
+.
+suspense before the outcome of each delivery is revealed
